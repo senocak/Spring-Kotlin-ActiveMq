@@ -1,0 +1,7 @@
+spring:
+    application:
+        name: Spring Kotlin ActiveMq
+    docker:
+        compose:
+            enabled: true
+            lifecycle-management: start_and_stop

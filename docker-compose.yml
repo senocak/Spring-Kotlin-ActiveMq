@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  activemq:
+    image: rmohr/activemq:latest
+    container_name: activemq
+    ports:
+      - "61616:61616"   # OpenWire for clients
+      - "8161:8161"     # Web console
+      - "5672:5672"     # AMQP
+      - "61613:61613"   # STOMP
+      - "1883:1883"     # MQTT
+    volumes:
+      - ./data:/var/lib/activemq
+    environment:
+      ACTIVEMQ_CONFIG_NAME: amqp-srv
+      ACTIVEMQ_MIN_MEMORY: 512
+      ACTIVEMQ_MAX_MEMORY: 1024
+    networks:
+      - jms
+networks:
+  jms:
